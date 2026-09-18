@@ -105607,7 +105607,7 @@ return r.oP(s==null?6:s,B.acw)
 case"/equipo":s=r.w.h(0,"/equipo")
 return r.oP(s==null?7:s,B.VM)
 default:return B.q8}},
-M(a){return new A.FQ(this.x,"/login",new A.aOT(this),new A.aOU(this),new A.aOV(),"CRM Streaming",$.bez(),B.a5V,B.ZS,!1,null)},
+M(a){return new A.FQ(this.x,"/login",new A.aOT(this),new A.aOU(this),new A.aOV(),"Krymo",$.bez(),B.a5V,B.ZS,!1,null)},
 oP(a,b){return new A.dt(new A.aOO(this,b,a),null)}}
 A.aOP.prototype={
 $1(a){return!1},
