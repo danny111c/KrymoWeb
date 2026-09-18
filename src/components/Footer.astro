@@ -1,0 +1,33 @@
+<footer class="border-t border-white/[0.08] bg-black pt-16 pb-12 px-6 relative overflow-hidden z-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+    
+    <!-- Logo y Derechos -->
+    <div class="flex items-center gap-3">
+      <img 
+        src="/logo.png" 
+        alt="Logo Krymo" 
+        class="w-7 h-7 rounded-md object-contain"
+      />
+      <span class="text-xs text-zinc-400">© <span id="current-year"></span> Krymo. Todos los derechos reservados.</span>
+    </div>
+
+    <!-- Enlaces -->
+    <div class="flex items-center gap-6 text-xs text-zinc-400">
+      <a href="https://wa.me/593967709422?" target="_blank" class="hover:text-white transition">WhatsApp</a>
+      <a href="#precios" class="hover:text-white transition">Precios</a>
+    </div>
+  </div>
+
+  <!-- TEXTO GIGANTE KRYMO CON DESVANECIMIENTO DE ARRIBA A ABAJO -->
+<div class="select-none pointer-events-none mt-12 text-center text-[18vw] font-black tracking-tighter leading-none border-t border-white/[0.02] bg-gradient-to-b from-zinc-800 to-[#060606] bg-clip-text text-transparent">
+    KRYMO
+  </div>
+</footer>
+
+<script>
+  // Actualizar año actual automáticamente
+  const yearSpan = document.getElementById('current-year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear().toString();
+  }
+</script>

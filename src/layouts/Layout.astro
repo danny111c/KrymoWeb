@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "CRM & Sistema de Gestión para Vendedores de Streaming" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth bg-black">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="/logo.png" />    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-black text-white font-sans antialiased selection:bg-zinc-800 selection:text-white relative min-h-screen overflow-x-hidden bg-noise">
+    <!-- Fondos decorativos -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      <div class="absolute inset-0 bg-tech-grid mask-radial-faded opacity-80"></div>
+      <div class="absolute inset-0 spotlight-hero"></div>
+    </div>
+
+    <!-- Contenido de las páginas -->
+    <slot />
+  </body>
+</html>

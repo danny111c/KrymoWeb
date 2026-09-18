@@ -1,0 +1,169 @@
+<!-- 1. BARRA SUPERIOR (HEADER) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/[0.08]">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    
+    <!-- LOGO DE KRYMO -->
+    <a href="#" class="flex items-center gap-3 group">
+      <img 
+        src="/logo.png" 
+        alt="Logo Krymo" 
+        class="w-8 h-8 rounded-lg object-contain transition-transform duration-200 group-hover:scale-105"
+      />
+      <span class="text-lg font-bold tracking-tight text-white">Krymo</span>
+    </a>
+
+    <!-- Enlaces Escritorio -->
+    <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-medium text-zinc-400">
+      <a href="#caracteristicas" class="nav-link transition hover:text-white">Características</a>
+      <a href="#precios" class="nav-link transition hover:text-white">Precios</a>
+      <a href="#descargar" class="nav-link transition hover:text-white">Descargas</a>
+      <a href="#faq" class="nav-link transition hover:text-white">FAQ</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a 
+        href="https://wa.me/593967709422?text=Hola,%20deseo%20comprar%20una%20licencia%20de%20Krymo" 
+        target="_blank"
+        class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-bold text-black bg-white hover:bg-zinc-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+      >
+        Obtener
+      </a>
+
+      <!-- Botón Móvil -->
+      <button 
+        id="mobile-menu-btn" 
+        type="button"
+        class="md:hidden p-2 text-white focus:outline-none cursor-pointer select-none" 
+        aria-label="Abrir Menú"
+      >
+        <svg id="icon-menu" class="w-7 h-7 block pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+        <svg id="icon-close" class="w-7 h-7 hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- 2. MENÚ MÓVIL (AHORA AFUERA DEL HEADER, CON EL MISMO DESENFOQUE DE PC) -->
+<div 
+  id="mobile-menu" 
+  class="fixed inset-0 top-20 w-full z-40 bg-black/80 backdrop-blur-xl border-b border-white/[0.08] md:hidden hidden flex-col justify-between p-8"
+>
+  <!-- Enlaces Grandes y Centrados -->
+  <nav class="flex flex-col items-center justify-center text-center space-y-8 my-auto">
+    <a href="#caracteristicas" class="mobile-nav-link text-2xl font-bold tracking-tight text-white transition hover:text-zinc-400">
+      Características
+    </a>
+    <a href="#descargar" class="mobile-nav-link text-2xl font-bold tracking-tight text-white transition hover:text-zinc-400">
+      Descargas
+    </a>
+    <a href="#precios" class="mobile-nav-link text-2xl font-bold tracking-tight text-white transition hover:text-zinc-400">
+      Precios
+    </a>
+    <a href="#faq" class="mobile-nav-link text-2xl font-bold tracking-tight text-white transition hover:text-zinc-400">
+      Preguntas Frecuentes
+    </a>
+  </nav>
+
+  <!-- Botón Inferior -->
+  <div class="pt-6 border-t border-white/10 pb-4">
+    <a 
+      href="https://wa.me/593967709422?text=Hola,%20deseo%20comprar%20una%20licencia%20de%20Krymo" 
+      target="_blank"
+      class="w-full inline-flex items-center justify-center py-4 text-sm font-bold uppercase tracking-wider text-black bg-white rounded-full shadow-lg"
+    >
+      Comprar por WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- 3. SCRIPT -->
+<script>
+  function setupNavbar(): void {
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconMenu = document.getElementById('icon-menu');
+    const iconClose = document.getElementById('icon-close');
+
+    if (!mobileBtn || !mobileMenu) return;
+
+    function abrirMenu(): void {
+      mobileMenu?.classList.remove('hidden');
+      mobileMenu?.classList.add('flex');
+      iconMenu?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function cerrarMenu(): void {
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+      iconMenu?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    mobileBtn.addEventListener('click', (e: MouseEvent) => {
+      e.stopPropagation();
+      const estaAbierto = mobileMenu.classList.contains('flex');
+      if (estaAbierto) {
+        cerrarMenu();
+      } else {
+        abrirMenu();
+      }
+    });
+
+    // Desplazamiento suave
+    function animarScroll(destinoY: number, duracion: number = 700): void {
+      const inicioY: number = window.pageYOffset || document.documentElement.scrollTop;
+      const distancia: number = destinoY - inicioY;
+      let tiempoInicial: number | null = null;
+
+      function pasoAnimacion(tiempoActual: number): void {
+        if (tiempoInicial === null) tiempoInicial = tiempoActual;
+        const tiempoTranscurrido: number = tiempoActual - tiempoInicial;
+        const progreso: number = Math.min(tiempoTranscurrido / duracion, 1);
+        
+        const curva: number = progreso < 0.5 
+          ? 4 * progreso * progreso * progreso 
+          : 1 - Math.pow(-2 * progreso + 2, 3) / 2;
+
+        window.scrollTo(0, inicioY + (distancia * curva));
+
+        if (tiempoTranscurrido < duracion) {
+          requestAnimationFrame(pasoAnimacion);
+        }
+      }
+
+      requestAnimationFrame(pasoAnimacion);
+    }
+
+    document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link, .nav-link').forEach((enlace: HTMLAnchorElement) => {
+      enlace.addEventListener('click', (e: MouseEvent) => {
+        const href = enlace.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+
+        const elementoDestino = document.querySelector<HTMLElement>(href);
+        if (elementoDestino) {
+          e.preventDefault();
+          cerrarMenu();
+
+          const posicionElemento: number = elementoDestino.getBoundingClientRect().top + window.pageYOffset;
+          const posicionFinal: number = posicionElemento - 80;
+
+          animarScroll(posicionFinal, 700);
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupNavbar);
+  } else {
+    setupNavbar();
+  }
+  document.addEventListener('astro:page-load', setupNavbar);
+</script>

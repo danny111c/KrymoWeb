@@ -1,0 +1,121 @@
+---
+// src/components/Download.astro
+
+// 🔗 ENLACES DIRECTOS A TUS RELEASES DE GITHUB
+const windowsDownloadUrl = "https://github.com/danny111c/krymo-releases/releases/latest/download/Krymo.rar";
+const androidDownloadUrl = "https://github.com/danny111c/krymo-releases/releases/latest/download/Krymo.apk";
+
+// 🌐 Enlace provisional de la App Web (cámbialo cuando configures tu subdominio)
+const webAppUrl = "https://app.tu-dominio.com";
+---
+
+<section id="descargar" class="py-24 px-6 max-w-6xl mx-auto border-t border-white/[0.08]">
+  
+  <!-- Encabezado -->
+  <div class="text-center max-w-2xl mx-auto mb-16">
+    <h2 class="text-xs uppercase font-bold tracking-widest text-zinc-500 mb-3">Acceso Multiplataforma</h2>
+    <p class="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+      Descarga Krymo
+    </p>
+    <p class="text-xs sm:text-sm text-zinc-400 mt-3">
+      Gestiona tus cuentas desde tu computadora, celular o cualquier navegador.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+    
+    <!-- 1. Windows PC (.rar) -->
+    <div class="bg-[#09090B] border border-white/10 rounded-[28px] p-8 flex flex-col justify-between shadow-2xl hover:border-white/20 transition duration-300">
+      <div>
+        <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-white mb-6">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+          </svg>
+        </div>
+        
+        <div class="flex items-center gap-2 mb-2">
+          <h3 class="text-lg font-bold text-white">Windows</h3>
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-zinc-300">.RAR</span>
+        </div>
+        
+        <p class="text-xs text-zinc-400 leading-relaxed mb-8">
+          Aplicación de escritorio. Descomprime y ejecuta sin instalaciones complejas.
+        </p>
+      </div>
+
+      <div>
+        <a 
+          href={windowsDownloadUrl} 
+          class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-bold text-black bg-white hover:bg-zinc-200 transition shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Descargar para PC
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. Android (.apk) -->
+    <div class="bg-[#09090B] border border-white/10 rounded-[28px] p-8 flex flex-col justify-between shadow-2xl hover:border-white/20 transition duration-300">
+      <div>
+        <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-white mb-6">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0002s.4482-.9997.9993-.9997c.5516 0 .9998.4481.9998.9997s-.4482 1.0002-.9998 1.0002m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0002s.4482-.9997.9993-.9997c.5516 0 .9998.4481.9998.9997s-.4482 1.0002-.9998 1.0002m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.4116 13.8533 8.1 12 8.1s-3.5902.3116-5.1367.8497L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+          </svg>
+        </div>
+        
+        <div class="flex items-center gap-2 mb-2">
+          <h3 class="text-lg font-bold text-white">Android</h3>
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-zinc-300">.APK</span>
+        </div>
+        
+        <p class="text-xs text-zinc-400 leading-relaxed mb-8">
+          Lleva tu negocio en el bolsillo. Atiende clientes, entrega perfiles y despacha cuentas desde tu teléfono.
+        </p>
+      </div>
+
+      <div>
+        <a 
+          href={androidDownloadUrl} 
+          class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-bold text-black bg-white hover:bg-zinc-200 transition shadow-[0_0_20px_rgba(255,255,255,0.15)]"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Descargar APK
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. Versión Web -->
+    <div class="bg-[#09090B] border border-white/10 rounded-[28px] p-8 flex flex-col justify-between shadow-2xl hover:border-white/20 transition duration-300">
+      <div>
+        <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-white/10 flex items-center justify-center text-white mb-6">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        
+        <div class="flex items-center gap-2 mb-2">
+          <h3 class="text-lg font-bold text-white">App Web</h3>
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">ONLINE</span>
+        </div>
+        
+        <p class="text-xs text-zinc-400 leading-relaxed mb-8">
+          Sin descargas ni instalaciones. Accede a tu Krymo desde cualquier navegador.
+        </p>
+      </div>
+
+      <div>
+        <a 
+          href={webAppUrl} 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-semibold text-zinc-300 bg-zinc-900 border border-white/10 hover:bg-zinc-800 hover:text-white transition"
+        >
+          <span>Abrir en el Navegador</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</section>

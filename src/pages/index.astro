@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Download from '../components/Download.astro'; // 👈 1. IMPORTAR AQUÍ
+import Features from '../components/Features.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Krymo">
+
+  <!-- ================================================================= -->
+  <!-- CONTENEDOR PRINCIPAL MAESTRO:                                      -->
+  <!-- Modifica las clases aquí para cambiar el tamaño y margen de toda la web -->
+  <!-- ================================================================= -->
+  <div id="global-page-container" class="w-full relative z-10">
+    
+    <Navbar />
+    
+    <main>
+      <Hero />
+      <Features />
+      <Pricing />
+        <Download />
+      <FAQ />
+    </main>
+
+    <Footer />
+
+  </div>
+
+  <!-- SCRIPT CLIENTE PARA WHATSAPP, ACORDEÓN Y MENÚ -->
+  <script is:inline>
+    // 1. Configuración de WhatsApp
+    const WHATSAPP_NUMBER = "593967709422";
+
+    const planMessages = {
+      demo: "Hola, deseo comprar una licencia de Krymo",
+      individual: "Hola, me interesa el Plan Individual ($5 USD/mes) de Krymo.",
+      equipo: "Hola, me interesa el Plan Equipo ($6.99 USD/mes) de Krymo.",
+      agencia: "Hola, me interesa el Plan Agencia ($10 USD/mes) de Krymo."
+    };
+
+    document.querySelectorAll(".wa-btn").forEach((btn) => {
+      const planKey = btn.getAttribute("data-plan") || "demo";
+      const message = planMessages[planKey] || planMessages.demo;
+      const encodedUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      btn.setAttribute("href", encodedUrl);
+      btn.setAttribute("target", "_blank");
+      btn.setAttribute("rel", "noopener noreferrer");
+    });
+
+    // 2. Acordeón FAQs
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach((item) => {
+      const toggleBtn = item.querySelector(".faq-toggle");
+      const content = item.querySelector(".faq-content");
+      const icon = item.querySelector(".faq-icon");
+
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = content.classList.contains("open");
+
+        faqItems.forEach((other) => {
+          other.querySelector(".faq-content").classList.remove("open");
+          const otherIcon = other.querySelector(".faq-icon");
+          if (otherIcon) otherIcon.classList.remove("rotate-180");
+        });
+
+        if (!isOpen) {
+          content.classList.add("open");
+          if (icon) icon.classList.add("rotate-180");
+        }
+      });
+    });
+
+    // 3. Menú Móvil
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+      });
+    }
+
+    // 4. Año del Footer
+    const yearSpan = document.getElementById("current-year");
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  </script>
+
+</Layout>
